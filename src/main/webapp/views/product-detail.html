@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products Detail</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" th:href="@{/css/pro.css}">
+</head>
+<body>
+<th:block th:insert="layouts/top.html"></th:block>
+<div id="wrapper">
+    <div th:if="${successMessage}" class="tb" id="added">
+        <div class="tba">
+            <div th:text="${successMessage}" class="tbb">Item was added to cart</div>
+        </div>
+    </div>
+    <main th:object="${proDetail}">
+        <div class="container">
+
+            <div class="grid product">
+                <div class="column-xs-12 column-md-7">
+                    <div class="product-gallery">
+                        <div class="product-image">
+                            <img class="active" th:src="@{|../uploads/${proDetail.image1}|}">
+                        </div>
+                        <ul class="image-list">
+                            <li class="image-item"><img th:src="@{|../uploads/${proDetail.image1}|}" tabindex="0"></li>
+                            <li class="image-item"><img th:src="@{|../uploads/${proDetail.image2}|}" tabindex="0"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column-xs-12 column-md-5">
+                    <h1 th:text="${proDetail.productName}"></h1>
+                    <div class="star">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                    <h2 th:text="${proDetail.export_price + '$'}"></h2>
+
+                    <form id="addToCartForm" th:action="@{/product-detail}" method="post">
+                        <input type="hidden" th:name="productId" th:value="${proDetail.productId}">
+                        <div class="buttons_added">
+                            <input class="minus is-form" type="button" value="-" onclick="decrementQuantity()">
+                            <input id="quantityInput" aria-label="quantity" class="input-qty" max="10" min="1" name="quantity" type="number" value="1">
+                            <input class="plus is-form" type="button" value="+" onclick="incrementQuantity()">
+                        </div>
+                        <br>
+                        <button type="submit" class="add">ADD TO CART</button>
+                    </form>
+
+                    <div class="description">
+                        <div class="text1">This is a bamboo toothbrush with the S. logo on it and the handle is made of bamboo.</div><br>
+
+                        <div class="title1">MAIN RAW MATERIALS/INGREDIENTS
+                        </div>
+                        <div class="text1">Handle: Bamboo
+                            <br>
+                            Brush: Nylon 6 (BPA free)</div>
+                        <div class="title1">SIZE/CAPACITY
+                        </div>
+                        <div class="text1">Total length approx. 19cm Head 2.4cm</div>
+                        <div class="title1">COUNTRY OF ORIGIN</div>
+                        <div class="text1">China</div>
+                        <div class="title1">WHAT YOU CAN DO AFTER USE
+                        </div>
+                        <div class="text1">・Cleaning<br>
+                            Perfect for cleaning small areas such as bathrooms, kitchens, shoes, etc.<br>
+                            The bamboo part can be composted or disposed of as combustible garbage, and the brush part can be recycled using a nylon collection box or disposed of as combustible garbage. (Please dispose of according to your local area.)</div>
+                        <div class="sc-fXynhf iLAZIh">
+                            <div class="sc-jIAOiI bOYtNB">
+                                <div class="MuiGrid-root sc-papXJ sc-ZyCDH kXlEay kZplGf MuiGrid-container" width="60%">
+                                    <div class="MuiGrid-root sc-papXJ sc-jOhDuK kXlEay eNLHpt MuiGrid-item MuiGrid-justify-content-xs-center MuiGrid-grid-xs-4">
+                                        <img th:src="@{/images/eco.png}" height="120" width="120" class="sc-hlnMnd bFIxXq">
+                                    </div>
+                                    <div class="MuiGrid-root sc-papXJ sc-jOhDuK kXlEay eNLHpt MuiGrid-item MuiGrid-justify-content-xs-center MuiGrid-grid-xs-4">
+                                        <img th:src="@{/images/fsc.png}" height="120" width="120" class="sc-hlnMnd bFIxXq">
+                                    </div>
+                                    <div class="MuiGrid-root sc-papXJ sc-jOhDuK kXlEay eNLHpt MuiGrid-item MuiGrid-justify-content-xs-center MuiGrid-grid-xs-4">
+                                        <img th:src="@{/images/gots.png}" height="120" width="120" class="sc-hlnMnd bFIxXq">
+                                    </div>
+                                    <div class="MuiGrid-root sc-papXJ sc-jOhDuK kXlEay eNLHpt MuiGrid-item MuiGrid-justify-content-xs-center MuiGrid-grid-xs-4">
+                                        <img th:src="@{/images/jas.png}" height="120" width="120" class="sc-hlnMnd bFIxXq">
+                                    </div>
+                                    <div class="MuiGrid-root sc-papXJ sc-jOhDuK kXlEay eNLHpt MuiGrid-item MuiGrid-justify-content-xs-center MuiGrid-grid-xs-4">
+                                        <img th:src="@{/images/msc.png}" height="120" width="120" class="sc-hlnMnd bFIxXq">
+                                    </div>
+                                    <div class="MuiGrid-root sc-papXJ sc-jOhDuK kXlEay eNLHpt MuiGrid-item MuiGrid-justify-content-xs-center MuiGrid-grid-xs-4">
+                                        <img th:src="@{/images/rspo.png}" height="120" width="120" class="sc-hlnMnd bFIxXq">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="backtop">
+        <a id="back-top" href="#top"><img th:src="@{images/top.png}" width="22px"></a>
+    </div>
+    <th:block th:insert="layouts/bottom.html"></th:block>
+</div>
+<script>
+    const activeImage = document.querySelector(".product-image .active");
+    const productImages = document.querySelectorAll(".image-list img");
+
+    function changeImage(e) {
+        activeImage.src = e.target.src;
+    }
+    productImages.forEach(image => image.addEventListener("click", changeImage));
+
+    function decrementQuantity() {
+        var quantityInput = document.getElementById('quantityInput');
+        var currentValue = parseInt(quantityInput.value, 10);
+
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+        }
+    }
+
+    function incrementQuantity() {
+        var quantityInput = document.getElementById('quantityInput');
+        var currentValue = parseInt(quantityInput.value, 10);
+
+        if (currentValue < 10) {
+            quantityInput.value = currentValue + 1;
+        }
+    }
+
+    var addedDiv = document.getElementById('added');
+    var timeoutDuration = 2000;
+
+
+
+        addedDiv.style.display = 'block';
+
+        setTimeout(function () {
+            addedDiv.style.display = 'none';
+        }, timeoutDuration);
+
+
+</script>
+<script th:src="@{js/sustainability.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{js/shop.js}"></script>
+<script th:src="@{js/pro1.js}"></script>
+</body>
+</html>

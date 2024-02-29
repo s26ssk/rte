@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/contact.css}">
+</head>
+<body>
+<th:block th:insert="layouts/top.html"></th:block>
+<div id="wrapper">
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="heading">
+                <h2>CONTACT
+                    <span> US </span></h2>
+                <p>以下のフォームを使用するか、RESTORETHEEARTH@INFO.COM までご連絡ください。</p>
+            </div>
+            <div class="thank-you">
+                <p class="note form-success">Thank you for your inquiry. We will contact you as soon as possible!</p>
+            </div>
+            <div class="row">
+
+                <div class="col-md-5">
+                    <div class="title">
+                        <h3>CUSTOMER SUPPORT</h3>
+                        <p>カスタマーサポート営業時間：10:00～16:00 （土日祝日、年末年始は休業） </p>
+                    </div>
+                    <div class="content">
+
+                        <div class="info">
+                            <i class="fa-solid fa-phone"></i>
+
+                            <h4 class="d-inline-block">PHONE :
+                                <br>
+                                <span>+817014054712 , +810820313987</span></h4>
+                        </div>
+
+                        <div class="info">
+                            <i class="fa-solid fa-envelope"></i>
+                            <h4 class="d-inline-block">EMAIL :
+                                <br>
+                                <span>RESTORETHEEARTH@INFO.COM</span></h4>
+                        </div>
+
+                        <div class="info">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <h4 class="d-inline-block">ADDRESS :<br>
+                                <span>東京都埼玉県新座市野火止4-4-7</span></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <form>
+                        <div class="row1">
+                            <div class="col-sm-6">
+                                <input class="form-control1"  placeholder="お名前"/>
+                                <p class="error-hint"></p>
+                            </div>
+                            <div class="col-sm-7">
+                                <input class="form-control1"  placeholder="Eメール"/>
+                                <p class="error-hint"></p>
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control"  placeholder="ご注文番号"/>
+                                <p class="error-hint"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control"  id="comment" placeholder="メッセージ"></textarea>
+                            <p class="error-hint" ></p>
+                        </div>
+                        <button class="btn btn-block" type="submit">送信</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script th:inline="javascript">
+        var thankYouDiv = document.querySelector('.thank-you');
+
+        if (thankYouDiv) {
+            setTimeout(function () {
+                thankYouDiv.classList.add('hidden');
+            }, 2500);
+        }
+    </script>
+    <th:block th:insert="layouts/bottom.html"></th:block>
+    <script th:src="@{/js/script.js}"></script>
+</div>
+</body>
+</html>

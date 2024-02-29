@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
+</head>
+<body>
+<th:block th:insert="layouts/top.html"></th:block>
+<div id="wrapper">
+    <div class="box">
+        <form id="form" action="/subscribe" method="post">
+            <div class="inputBox">
+                <div th:if="${error}" class="thank-you"><p class="note form-success" th:text="${error}"></p></div>
+                <input type="email" id="email" name="email" placeholder="ENTER EMAIL FOR UPDATE" onkeyup="validate()">
+                <button id="submitemail" type="submit">
+                    <span id="submit"> <span>SUBMIT</span> <i class="fa-solid fa-angle-right"></i></span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <th:block th:insert="layouts/bottom.html"></th:block>
+</div>
+<script th:src="@{js/signup.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{js/shop.js}"></script>
+<script th:src="@{js/pro1.js}"></script>
+</body>
+</html>

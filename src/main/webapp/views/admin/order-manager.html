@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class="light">
+    <!-- BEGIN: Head -->
+    
+<!-- Mirrored from tinker-html.vercel.app/side-menu-light-transaction-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Nov 2023 12:26:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8">
+        <link href="dist/images/logo.svg" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Tinker admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
+        <meta name="keywords" content="admin template, Tinker Admin Template, dashboard template, flat admin template, responsive admin template, web app">
+        <meta name="author" content="LEFT4CODE">
+        <title>Transaction List - Midone - Tailwind HTML Admin Template</title>
+        <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <th:block th:insert="layouts/style-admin.html"></th:block>
+
+        <!-- END: CSS Assets-->
+    </head>
+    <!-- END: Head -->
+    <body class="py-5 md:py-0 bg-black/[0.15] dark:bg-transparent">
+        <div class="flex mt-[4.7rem] md:mt-0 overflow-hidden">
+            <!-- BEGIN: Side Menu -->
+            <nav class="side-nav">
+                <a th:href="@{/admin/dashboard}">
+                    <div class="logo">
+                        <img id="logo" th:src="@{/images/logo1.png}" alt="">
+                        <div class="item">
+                            <img id="hr" th:src="@{/images/icon1.png}" alt="">
+                        </div>
+                    </div>
+                </a>
+                <div class="side-nav__devider my-6"></div>
+                <ul>
+                    <li>
+                        <a th:href="@{/admin/dashboard}" class="side-menu">
+                            <div class="side-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="home" data-lucide="home" class="lucide lucide-home"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> </div>
+                            <div class="side-menu__title"> Dashboard </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/user-manager}" class="side-menu">
+                            <div class="side-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="users" data-lucide="users" class="lucide lucide-users"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg> </div>
+                            <div class="side-menu__title">Users</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/product-manager}" class="side-menu">
+                            <div class="side-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="hard-drive" data-lucide="hard-drive" class="lucide lucide-hard-drive"><line x1="22" y1="12" x2="2" y2="12"></line><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path><line x1="6" y1="16" x2="6.01" y2="16"></line><line x1="10" y1="16" x2="10.01" y2="16"></line></svg> </div>
+                            <div class="side-menu__title">Products</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/category-manager}" class="side-menu">
+                            <div class="side-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="inbox" data-lucide="inbox" class="lucide lucide-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path></svg> </div>
+                            <div class="side-menu__title"> Categories </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/order-manager}" class="side-menu side-menu--active">
+                            <div class="side-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="shopping-bag" data-lucide="shopping-bag" class="lucide lucide-shopping-bag"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg> </div>
+                            <div class="side-menu__title">Orders</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/profile}" class="side-menu">
+                            <div class="side-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="trello" data-lucide="trello" class="lucide lucide-trello"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="9"></rect><rect x="14" y="7" width="3" height="5"></rect></svg> </div>
+                            <div class="side-menu__title"> Profile </div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- END: Side Menu -->
+            <!-- BEGIN: Content -->
+            <div class="content">
+                <!-- BEGIN: Top Bar -->
+                <div class="top-bar -mx-4 px-4 md:mx-0 md:px-0">
+                    <!-- BEGIN: Breadcrumb -->
+                    <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Application</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </nav>
+                    <!-- END: Breadcrumb -->
+                    <!-- BEGIN: Search -->
+                    <div class="intro-x relative mr-3 sm:mr-6">
+                        <div class="search hidden sm:block">
+                            <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
+                            <i data-lucide="search" class="search__icon dark:text-slate-500"></i> 
+                        </div>
+                        <a class="notification sm:hidden" href="#"> <i data-lucide="search" class="notification__icon dark:text-slate-500"></i> </a>
+                        <div class="search-result">
+                            <div class="search-result__content">
+                                <div class="search-result__content__title">Pages</div>
+                                <div class="mb-5">
+                                    <a href="#" class="flex items-center">
+                                        <div class="w-8 h-8 bg-success/20 dark:bg-success/10 text-success flex items-center justify-center rounded-full"> <i class="w-4 h-4" data-lucide="inbox"></i> </div>
+                                        <div class="ml-3">Mail Settings</div>
+                                    </a>
+                                    <a href="#" class="flex items-center mt-2">
+                                        <div class="w-8 h-8 bg-pending/10 text-pending flex items-center justify-center rounded-full"> <i class="w-4 h-4" data-lucide="users"></i> </div>
+                                        <div class="ml-3">Users & Permissions</div>
+                                    </a>
+                                    <a href="#" class="flex items-center mt-2">
+                                        <div class="w-8 h-8 bg-primary/10 dark:bg-primary/20 text-primary/80 flex items-center justify-center rounded-full"> <i class="w-4 h-4" data-lucide="credit-card"></i> </div>
+                                        <div class="ml-3">Transactions Report</div>
+                                    </a>
+                                </div>
+                                <div class="search-result__content__title">Users</div>
+                                <div class="mb-5">
+                                    <a href="#" class="flex items-center mt-2">
+                                        <div class="w-8 h-8 image-fit">
+                                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-7.jpg">
+                                        </div>
+                                        <div class="ml-3">Al Pacino</div>
+                                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">alpacino@left4code.com</div>
+                                    </a>
+                                    <a href="#" class="flex items-center mt-2">
+                                        <div class="w-8 h-8 image-fit">
+                                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-10.jpg">
+                                        </div>
+                                        <div class="ml-3">Leonardo DiCaprio</div>
+                                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">leonardodicaprio@left4code.com</div>
+                                    </a>
+                                    <a href="#" class="flex items-center mt-2">
+                                        <div class="w-8 h-8 image-fit">
+                                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-10.jpg">
+                                        </div>
+                                        <div class="ml-3">Sylvester Stallone</div>
+                                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">sylvesterstallone@left4code.com</div>
+                                    </a>
+                                    <a href="#" class="flex items-center mt-2">
+                                        <div class="w-8 h-8 image-fit">
+                                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-5.jpg">
+                                        </div>
+                                        <div class="ml-3">Robert De Niro</div>
+                                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">robertdeniro@left4code.com</div>
+                                    </a>
+                                </div>
+                                <div class="search-result__content__title">Products</div>
+                                <a href="#" class="flex items-center mt-2">
+                                    <div class="w-8 h-8 image-fit">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/preview-3.jpg">
+                                    </div>
+                                    <div class="ml-3">Dell XPS 13</div>
+                                    <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">PC &amp; Laptop</div>
+                                </a>
+                                <a href="#" class="flex items-center mt-2">
+                                    <div class="w-8 h-8 image-fit">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/preview-4.jpg">
+                                    </div>
+                                    <div class="ml-3">Nikon Z6</div>
+                                    <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Photography</div>
+                                </a>
+                                <a href="#" class="flex items-center mt-2">
+                                    <div class="w-8 h-8 image-fit">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/preview-4.jpg">
+                                    </div>
+                                    <div class="ml-3">Dell XPS 13</div>
+                                    <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">PC &amp; Laptop</div>
+                                </a>
+                                <a href="#" class="flex items-center mt-2">
+                                    <div class="w-8 h-8 image-fit">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/preview-3.jpg">
+                                    </div>
+                                    <div class="ml-3">Sony A7 III</div>
+                                    <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Photography</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END: Search -->
+                    <!-- BEGIN: Notifications -->
+                    <div class="intro-x dropdown mr-auto sm:mr-6">
+                        <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="bell" class="notification__icon dark:text-slate-500"></i> </div>
+                        <div class="notification-content pt-2 dropdown-menu">
+                            <div class="notification-content__box dropdown-content">
+                                <div class="notification-content__title">Notifications</div>
+                                <div class="cursor-pointer relative flex items-center ">
+                                    <div class="w-12 h-12 flex-none image-fit mr-1">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-7.jpg">
+                                        <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
+                                    </div>
+                                    <div class="ml-2 overflow-hidden">
+                                        <div class="flex items-center">
+                                            <a href="javascript:;" class="font-medium truncate mr-5">Al Pacino</a> 
+                                            <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">05:09 AM</div>
+                                        </div>
+                                        <div class="w-full truncate text-slate-500 mt-0.5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem </div>
+                                    </div>
+                                </div>
+                                <div class="cursor-pointer relative flex items-center mt-5">
+                                    <div class="w-12 h-12 flex-none image-fit mr-1">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-10.jpg">
+                                        <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
+                                    </div>
+                                    <div class="ml-2 overflow-hidden">
+                                        <div class="flex items-center">
+                                            <a href="javascript:;" class="font-medium truncate mr-5">Leonardo DiCaprio</a> 
+                                            <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
+                                        </div>
+                                        <div class="w-full truncate text-slate-500 mt-0.5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem </div>
+                                    </div>
+                                </div>
+                                <div class="cursor-pointer relative flex items-center mt-5">
+                                    <div class="w-12 h-12 flex-none image-fit mr-1">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-10.jpg">
+                                        <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
+                                    </div>
+                                    <div class="ml-2 overflow-hidden">
+                                        <div class="flex items-center">
+                                            <a href="javascript:;" class="font-medium truncate mr-5">Sylvester Stallone</a> 
+                                            <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
+                                        </div>
+                                        <div class="w-full truncate text-slate-500 mt-0.5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
+                                    </div>
+                                </div>
+                                <div class="cursor-pointer relative flex items-center mt-5">
+                                    <div class="w-12 h-12 flex-none image-fit mr-1">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-5.jpg">
+                                        <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
+                                    </div>
+                                    <div class="ml-2 overflow-hidden">
+                                        <div class="flex items-center">
+                                            <a href="javascript:;" class="font-medium truncate mr-5">Robert De Niro</a> 
+                                            <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">03:20 PM</div>
+                                        </div>
+                                        <div class="w-full truncate text-slate-500 mt-0.5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem </div>
+                                    </div>
+                                </div>
+                                <div class="cursor-pointer relative flex items-center mt-5">
+                                    <div class="w-12 h-12 flex-none image-fit mr-1">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg">
+                                        <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
+                                    </div>
+                                    <div class="ml-2 overflow-hidden">
+                                        <div class="flex items-center">
+                                            <a href="javascript:;" class="font-medium truncate mr-5">Denzel Washington</a> 
+                                            <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">05:09 AM</div>
+                                        </div>
+                                        <div class="w-full truncate text-slate-500 mt-0.5">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomi</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END: Notifications -->
+                    <!-- BEGIN: Account Menu -->
+                    <div class="intro-x dropdown w-8 h-8">
+                        <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false" data-tw-toggle="dropdown">
+                            <img alt="Midone - HTML Admin Template" th:src="@{/images/userImg.png}">
+                        </div>
+                        <div th:if="${session.loggedInUser}" class="dropdown-menu w-56">
+                            <ul class="dropdown-content bg-primary text-white">
+                                <li class="p-2">
+                                    <div th:text="${session.loggedInUser.userName}" class="font-medium"></div>
+                                    <div th:text="${session.loggedInUser.email}" class="text-xs text-white/70 mt-0.5 dark:text-slate-500"></div>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider border-white/[0.08]">
+                                </li>
+                                <li>
+                                    <a th:href="@{/admin/profile}" class="dropdown-item hover:bg-white/5"> <i data-lucide="user" class="w-4 h-4 mr-2"></i> Profile </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/admin/change-password}" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider border-white/[0.08]">
+                                </li>
+                                <li>
+                                    <a th:href="@{/user/logout}" class="dropdown-item hover:bg-white/5"> <i data-lucide="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END: Account Menu -->
+                </div>
+                <!-- END: Top Bar -->
+                <h2 class="intro-y text-lg font-medium mt-10">
+                    Transaction List
+                </h2>
+                <div class="grid grid-cols-12 gap-6 mt-5">
+                    <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
+                        <div class="flex w-full sm:w-auto">
+                            <div class="w-48 relative text-slate-500">
+                                <input type="text" class="form-control w-48 box pr-10" placeholder="Search by invoice...">
+                                <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i> 
+                            </div>
+                            <select class="form-select box ml-2">
+                                <option>Status</option>
+                                <option>Waiting Payment</option>
+                                <option>Confirmed</option>
+                                <option>Packing</option>
+                                <option>Delivered</option>
+                                <option>Completed</option>
+                            </select>
+                        </div>
+                        <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
+                        <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
+                            <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </button>
+                            <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF </button>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                                    <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
+                                </button>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a href="#" class="dropdown-item"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-2"></i> Change Status </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown-item"> <i data-lucide="bookmark" class="w-4 h-4 mr-2"></i> Bookmark </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BEGIN: Data List -->
+                    <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+                        <table class="table table-report -mt-2">
+                            <thead>
+                                <tr>
+                                    <th class="whitespace-nowrap">
+                                        <input class="form-check-input" type="checkbox">
+                                    </th>
+                                    <th class="whitespace-nowrap">INVOICE</th>
+                                    <th class="whitespace-nowrap">BUYER NAME</th>
+                                    <th class="text-center whitespace-nowrap">STATUS</th>
+                                    <th class="whitespace-nowrap">PAYMENT</th>
+                                    <th class="text-right whitespace-nowrap">
+                                        <div class="pr-16">TOTAL TRANSACTION</div>
+                                    </th>
+                                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-36807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Angelina Jolie</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">California, LA</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-pending"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Pending Payment </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Checking payments</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">30 March, 11:00</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$36,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-72807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Sylvester Stallone</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Direct bank transfer</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$72,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-24807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Denzel Washington</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Direct bank transfer</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$24,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-188807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Morgan Freeman</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Direct bank transfer</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$188,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-52807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Kate Winslet</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Direct bank transfer</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$52,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-24807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Arnold Schwarzenegger</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">California, LA</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-pending"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Pending Payment </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Checking payments</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">30 March, 11:00</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$24,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-47807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Angelina Jolie</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Direct bank transfer</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$47,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-40807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Hugh Jackman</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Direct bank transfer</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$40,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="intro-x">
+                                    <td class="w-10">
+                                        <input class="form-check-input" type="checkbox">
+                                    </td>
+                                    <td class="w-40 !py-4"> <a href="#" class="underline decoration-dotted whitespace-nowrap">#INV-32807556</a> </td>
+                                    <td class="w-40">
+                                        <a href="#" class="font-medium whitespace-nowrap">Kevin Spacey</a> 
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">California, LA</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center whitespace-nowrap text-pending"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Pending Payment </div>
+                                    </td>
+                                    <td>
+                                        <div class="whitespace-nowrap">Checking payments</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">30 March, 11:00</div>
+                                    </td>
+                                    <td class="w-40 text-right">
+                                        <div class="pr-16">$32,000,00</div>
+                                    </td>
+                                    <td class="table-report__action">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                            <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END: Data List -->
+                    <!-- BEGIN: Pagination -->
+                    <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+                        <nav class="w-full sm:w-auto sm:mr-auto">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-left"></i> </a>
+                                </li>
+                                <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                                <li class="page-item"> <a class="page-link" href="#">1</a> </li>
+                                <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
+                                <li class="page-item"> <a class="page-link" href="#">3</a> </li>
+                                <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-right"></i> </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <select class="w-20 form-select box mt-3 sm:mt-0">
+                            <option>10</option>
+                            <option>25</option>
+                            <option>35</option>
+                            <option>50</option>
+                        </select>
+                    </div>
+                    <!-- END: Pagination -->
+                </div>
+                <!-- BEGIN: Delete Confirmation Modal -->
+                <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="p-5 text-center">
+                                    <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i> 
+                                    <div class="text-3xl mt-5">Are you sure?</div>
+                                    <div class="text-slate-500 mt-2">
+                                        Do you really want to delete these records? 
+                                        <br>
+                                        This process cannot be undone.
+                                    </div>
+                                </div>
+                                <div class="px-5 pb-8 text-center">
+                                    <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                                    <button type="button" class="btn btn-danger w-24">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Delete Confirmation Modal -->
+            </div>
+            <!-- END: Content -->
+        </div>
+        
+        <!-- BEGIN: JS Assets-->
+        <script src="../developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+        <script th:src="@{/js/app.js}"></script>
+
+        <!-- END: JS Assets-->
+    </body>
+
+<!-- Mirrored from tinker-html.vercel.app/side-menu-light-transaction-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Nov 2023 12:26:13 GMT -->
+</html>

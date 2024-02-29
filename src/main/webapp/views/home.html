@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restore The Earth</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<video autoplay muted loop id="myVideo">
+    <source th:src="@{/images/video2.mp4}" type="video/mp4">
+</video>
+<header>
+    <div id="load">
+        <div class="item"><img class="xoay" th:src="@{/images/icon.png}"></div>
+    </div>
+    <a th:href="@{/}">
+        <div class="logo"><img id="logo" th:src="@{/images/logo1.png}" alt=""></div>
+    </a>
+    <form class="form-horizontal">
+        <div class="form-group fancy-toggle">
+            <div class="form-control">
+                <input type="radio" name="reality-onoff" value="1" id="reality-on" class="on" checked/>
+                <label th:onclick="backgroundChanger()" for="reality-on"><span>REALITY ON</span></label>
+                <input type="radio" name="reality-onoff" value="1" id="reality-off" class="off"/>
+                <label th:onclick="backgroundChanger()" for="reality-off"><span>REALITY OFF</span></label>
+                <div class="indicator"></div>
+            </div>
+        </div>
+    </form>
+    <div class="header-top">
+        <div class="container">
+            <div class="wrapper flexitem">
+                <div class="right">
+                    <ul class="flexitem second-links">
+                        <li th:if="${session.loggedInUser}">
+                            <div class="dropdown">
+                                <div class="dropbtn" onclick="myFunction()">
+                                    <span style="pointer-events: none ;color: white;font-weight: 100;"
+                                          th:text="${'Hi ' + session.loggedInUser.userName +'!'}"></span>
+                                </div>
+                                <div class="dropdown-content" id="myDropdown">
+                                    <div class="email-show"><span style="font-weight: 100" th:text="${session.loggedInUser.email}"></span></div>
+                                    <hr>
+                                    <a th:href="@{/my-account}"><i class="fa-regular fa-user"></i> <span>My profile</span></a>
+                                    <a href="#"><i class="fa-regular fa-pen-to-square"></i> <span>Edit profile</span></a>
+                                    <a th:href="@{/user/logout}"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span></a>
+                                </div>
+                            </div>
+                            <a th:href="@{/cart}" class="iscart">
+                                <div class="icon-large">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <div class="fly-item"><span th:text="${session.cartQuantity}" class="item-number">0</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li th:unless="${session.loggedInUser}">
+                            <a th:href="@{/user/login}" style="text-decoration:none;"><i class="fa fa-user"></i></a>
+                            <a th:href="@{/user/login}" class="iscart">
+                                <div class="icon-large">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <div class="fly-item"><span class="item-number">0</span></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="wrapper">
+    <div id="canvas_container"></div>
+    <a th:href="@{/product-list}"><img id="shop" th:src="@{/images/shop.png}" alt=""></a>
+    <ul class="social-icon">
+        <li><a href="https://www.instagram.com/k26.ssk/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+        <li><a href="https://www.instagram.com/k26.ssk/" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+        <li><a href="https://www.instagram.com/k26.ssk/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="https://www.instagram.com/k26.ssk/" target="_blank"><i class="fa-brands fa-google-plus-g"></i></a></li>
+    </ul>
+    <nav class="menu">
+        <ul>
+            <li><a th:href="@{/sustainability}">SUSTAINABILITY</a></li>
+            <li><a th:href="@{/shipping-price}">SHIPPING PRICES</a></li>
+            <li><a th:href="@{/contact}">CONTACT US</a></li>
+            <li><a th:href="@{/product-list}">PRODUCTS</a></li>
+            <li><a th:href="@{/subscribe}">SIGN UP</a></li>
+            <li><a th:href="@{/terms}">TERMS</a></li>
+        </ul>
+    </nav>
+</div>
+<script src='https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/three@0.121.1/examples/js/controls/OrbitControls.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js'></script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/shop.js}"></script>
+<script th:src="@{/js/pro1.js}"></script>
+</body>
+</html>

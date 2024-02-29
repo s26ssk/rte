@@ -1,0 +1,51 @@
+<header id="navBar">
+    <a th:href="@{/}">
+        <div class="logo">
+            <img id="logo" th:src="@{/images/logo2.png}" alt="">
+            <div class="item">
+                <img id="hr" th:src="@{/images/icon1.png}" alt="">
+            </div>
+        </div>
+    </a>
+    <div class="header-top">
+        <div class="container">
+            <div class="wrapper flexitem">
+                <div class="right">
+                    <ul class="flexitem second-links">
+                        <li th:if="${session.loggedInUser}">
+                            <div class="dropdown">
+                                <div class="dropbtn" onclick="myFunction()">
+                                    <span style="pointer-events: none ;color: #312923;font-weight: 100;"
+                                          th:text="${'Hi ' + session.loggedInUser.userName +'!'}"></span>
+                                </div>
+                                <div class="dropdown-content" id="myDropdown">
+                                    <div class="email-show"><span style="font-weight: 100" th:text="${session.loggedInUser.email}"></span></div>
+                                    <hr>
+                                    <a th:href="@{/my-account}"><i class="fa-regular fa-user"></i> <span>My profile</span></a>
+                                    <a href="#"><i class="fa-regular fa-pen-to-square"></i> <span>Edit profile</span></a>
+                                    <a th:href="@{/user/logout}"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span></a>
+                                </div>
+                            </div>
+                            <a th:href="@{/cart}" class="iscart">
+                                <div class="icon-large">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <div class="fly-item"><span th:text="${session.cartQuantity}" class="item-number">0</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li th:unless="${session.loggedInUser}">
+                            <a th:href="@{/user/login}" style="text-decoration:none;"><i class="fa fa-user"></i></a>
+                            <a th:href="@{/user/login}" class="iscart">
+                                <div class="icon-large">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <div class="fly-item"><span class="item-number">0</span></div>
+
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

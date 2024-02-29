@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/contact.css}">
+</head>
+<body>
+<th:block th:insert="layouts/top.html"></th:block>
+<div id="wrapper">
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="heading">
+                <h2>CONTACT
+                    <span> US </span></h2>
+                <p>Please use the form below or contact us at RESTORETHEEARTH@INFO.COM.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="title">
+                        <h3>CUSTOMER SUPPORT</h3>
+                        <p>Customer support business hours: 10:00-16:00 (Closed on Saturdays, Sundays, holidays, and New Year holidays) </p>
+                    </div>
+                    <div class="content">
+
+                        <div class="info">
+                            <i class="fa-solid fa-phone"></i>
+
+                            <h4 class="d-inline-block">PHONE :
+                                <br>
+                                <span>+817014054712 , +810820313987</span></h4>
+                        </div>
+
+                        <div class="info">
+                            <i class="fa-solid fa-envelope"></i>
+                            <h4 class="d-inline-block">EMAIL :
+                                <br>
+                                <span>RESTORETHEEARTH@INFO.COM</span></h4>
+                        </div>
+
+                        <div class="info">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <h4 class="d-inline-block">ADDRESS :<br>
+                                <span>4-4-7 Nobidome, Niiza City, Saitama Prefecture, Tokyo</span></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <form th:action="@{/contact}" th:object="${reqContactDTO}" method="post">
+                        <div class="row1">
+                            <div class="col-sm-6">
+                                <input class="form-control1" th:field="*{name}" th:classappend="${#fields.hasErrors('name')} ? 'invalid'" placeholder="Name"/>
+                                <p class="error-hint" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                            </div>
+                            <div class="col-sm-7">
+                                <input class="form-control1" th:field="*{email}" th:classappend="${#fields.hasErrors('email')} ? 'invalid'" placeholder="Email"/>
+                                <p class="error-hint" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" th:field="*{orderId}" th:classappend="${#fields.hasErrors('orderId')} ? 'invalid'" placeholder="Order Id"/>
+                                <p class="error-hint" th:if="${#fields.hasErrors('orderId')}" th:errors="*{orderId}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" th:field="*{message}" th:classappend="${#fields.hasErrors('message')} ? 'invalid'" id="comment" placeholder="message"></textarea>
+                            <p class="error-hint" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></p>
+                        </div>
+                        <button class="btn btn-block" type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <th:block th:insert="layouts/bottom.html"></th:block>
+    <script th:src="@{/js/script.js}"></script>
+</div>
+</body>
+</html>

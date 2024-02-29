@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@5.0.0/dist/ionicons.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/cart.css}">
+    <style>
+        .thank-you{
+            position: absolute;
+            left: 44%;
+            top: 41%;
+            z-index: 10;
+        }
+        .form-success {
+            color: #56ad6a;
+            background-color: #ecfef0;
+            border-color: #56ad6a;
+            border: #56ad6a;
+        }
+        .note{
+            border-radius: 7px;
+            padding: 14px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #56ad6a;
+            font-size: 1em;
+            text-align: left;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<th:block th:insert="layouts/top.html"></th:block>
+<div id="wrapper">
+    <div class="container">
+        <div th:if="${successMessage}" class="thank-you"><p class="note form-success" th:text="${successMessage}"></p></div>
+        <div class="title">YOUR CART</div>
+        <div class="body-cart">
+            <p class="empty" id="isempty">YOUR CART IS EMPTY</p>
+            <div class="product-container">
+                <div class="products">
+                    <form th:action="@{/cart}" method="post">
+                    <div class="product" th:each="cartItem : ${cartItems}" id="pro">
+                        <div class="ich">
+                            <a th:href="@{'/delete-cartItem/'+ ${cartItem.id}}">
+                                <i class="fa-solid fa-x"></i>
+                            </a>
+                        </div>
+                        <div class="anh">
+                            <img th:src="@{|../uploads/${cartItem.product.image1}|}">
+                        </div>
+                        <div class="ten">
+                            <h2 th:text="${cartItem.product.productName}">竹歯ブラシ｜BAMBOO TOOTHBRUSH</h2>
+                        </div>
+                        <div class="quantity">
+                            <h3><i class="fa fa-chevron-left" aria-hidden="true"></i> <span style="font-weight: 100"
+                                    th:text="${cartItem.quantity}"></span> <i class="fa fa-chevron-right"
+                                                                              aria-hidden="true"></i>
+                            </h3>
+                        </div>
+                        <div th:text="${cartItem.product.export_price + '$'}" class="price"><h3>300¥</h3></div>
+                    </div>
+                    <div class="basketTotalContainer">
+                        <h4 th:text="${'TOTAL: ' + total + '$'}" class="basketTotalTitle">TOTAL: 300¥</h4>
+                    </div>
+                    <div class="form-row">
+                        <label class="check"><input type="checkbox" class="preferences">I READ AND AGREE WITH RTE'S TERMS AND CONDITIONS.<span class="checkbox"></span></label>
+                    </div>
+                    <div class="btn">
+                        <button type="submit" class="btn btn-block">CHECKOUT</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bot-cart"><p class="backshop"><a class="back" th:href="@{product-list}">CONTINUE SHOPPING</a></p></div>
+    </div>
+    <th:block th:insert="layouts/bottom.html"></th:block>
+</div>
+<script>
+    var successMessageDivs = document.getElementsByClassName('thank-you');
+
+    if (successMessageDivs.length > 0) {
+        var successMessageDiv = successMessageDivs[0];
+
+        var delayTime = 2000;
+
+        setTimeout(function() {
+            successMessageDiv.style.display = 'none';
+        }, delayTime);
+    }
+</script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{js/cart.js}"></script>
+<script th:src="@{js/pro1.js}"></script>
+</body>
+</html>a

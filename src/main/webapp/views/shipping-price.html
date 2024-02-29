@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shipping price</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/shipping.css}">
+</head>
+<body>
+<th:block th:insert="layouts/top.html"></th:block>
+<div id="wrapper">
+    <h4 class="title">SHIPPING PRICES</h4>
+    <div class="shipping">
+        <div class="select-form">
+            <select class="input-select" id="mySelect" onchange="getddl()">
+                <option th:each="shippingPrice : ${shippingPriceList}" th:value="${shippingPrice.id}" th:text="${shippingPrice.countryName}"></option>
+            </select>
+        </div>
+
+        <div style="display: none" class="jsUTiK" id="text1">
+            <div class="iypgkC">
+                <div class="cfBVjZ">The shipping price for one item - <label id="one">10$</label></div>
+            </div>
+            <div class="iypgkC">
+                <div class="cfBVjZ">The shipping price for three or more items (order value less than 100$) - <label id="three">15$</label></div>
+            </div>
+            <div class="iypgkC">
+                <div class="cfBVjZ">To receive free shipping, your order value has to be over 100$</div>
+            </div>
+        </div>
+    </div>
+    <div style="display: block" class='modal-containers' id="modal">
+        <div class="modal-content">
+            <span class='modal-loader'></span>
+            <p class='modal-msg'>The shipping prices are being fetched, please wait.</p>
+        </div>
+    </div>
+    <th:block th:insert="layouts/bottom.html"></th:block>
+</div>
+<script th:inline="javascript">
+
+</script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{js/shipping.js}"></script>
+<script th:src="@{js/shop.js}"></script>
+<script th:src="@{js/pro1.js}"></script>
+</body>
+</html>

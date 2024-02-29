@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" th:href="@{/css/thanks.css}">
+    <style>
+        .note{
+            left: 57px;
+            top: 106px;
+        }
+        .form-success1 {
+            color: #56ad6a;
+            background-color: #ecfef0;
+            border-color: #56ad6a;
+            border: #56ad6a;
+        }
+    </style>
+</head>
+<body>
+
+<th:block th:insert="layouts/top.html"></th:block>
+<div id="wrapper">
+    <div class="mobile-screen">
+        <div class="headers">
+            <h1>Log in</h1>
+        </div>
+        <form id="login-form" class="login" action="/user/login" method="post" th:object="${user}">
+            <div class="logo"><p></p></div>
+            <div th:if="${loginError}" id="error-message" class="thank-you"><p class="note form-success"
+                                                            th:text="${loginError}"></p>
+            </div><div th:if="${successMessage}" id="success" class="thank-you"><p class="note form-success1"
+                                                            th:text="${successMessage}"></p>
+            </div>
+            <input th:field="*{email}" class="formc" type="email" name="email" placeholder="E-mail"
+                   th:classappend="${#fields.hasErrors('email')} ? 'invalid' " th:value="${savedEmail}">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-hint"></p>
+            <input th:field="*{password}" class="formc" type="password" name="name" placeholder="Password"
+                   th:classappend="${#fields.hasErrors('password')} ? 'invalid' ">
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-hint"></p>
+            <button type="submit" class="btn btn-block">LOG IN</button>
+            <div class="other-options">
+                <div class="option" id="newUser"><a th:href="@{/user/register}" class="option-text">NEW USER</a></div>
+                <div class="option" id="fPass"><a th:href="@{/user/forgot-password}" class="option-text"> FORGOT
+                    PASSWORD</a></div>
+            </div>
+        </form>
+    </div>
+    <th:block th:insert="layouts/bottom.html"></th:block>
+</div>
+<script>
+    var errorMessage = document.getElementById('error-message');
+
+    if (errorMessage) {
+        setTimeout(function() {
+            errorMessage.style.display = 'none';
+        }, 2000);
+    }
+    var success = document.getElementById('success');
+
+    if (success) {
+        setTimeout(function() {
+            success.style.display = 'none';
+        }, 2000);
+    }
+</script>
+<script th:src="@{/js/shop.js}"></script>
+<script th:src="@{/js/thanks.js}"></script>
+<script th:src="@{/js/pro1.js}"></script>
+</body>
+</html>

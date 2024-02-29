@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="icon" th:href="@{/images/icon.png}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" th:href="@{/css/shop.css}">
+    <style>
+        .next ul{
+            display: flex;
+        }
+        .next ul li{
+            padding: 5px;
+        }
+        .next ul li a {
+            text-decoration: none;
+        }
+        .myDisabled{
+            pointer-events: none;
+        }
+        .active{
+            background: #312923;
+        }
+        .mySort{
+            position: absolute;
+            top: 220px;
+            left: 13.5%;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .mySort p{
+            font-weight: 100;
+            margin-left: 8px;
+
+        }
+
+        .mySort a{
+            text-decoration: none;
+            padding: 7px;
+            color: white;
+            background: #8a6548;
+            border-radius: 7px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: rgb(50 50 93 / 11%) 0px 4px 6px, rgb(0 0 0 / 8%) 0px 1px 3px;
+            font-weight: 100;
+        }
+        .mySort a i{
+            padding: 3px 5px;
+        }
+        .mySort a:hover{
+            background: #312923;
+        }
+
+
+    </style>
+</head>
+<body>
+<th:block th:insert="layouts/top.html"></th:block>
+<div id="wrapper">
+    <section id="product1" class="section-p1">
+
+        <div class="pro-container">
+            <h2>PRODUCTS</h2>
+            <div class="container1">
+                <div class="mySort">
+                <a style="margin-right: 5px;" th:href="@{/product-list(page=${currentPage}, sort='exportPrice', order='asc')}" class="sort-button"><i class="fa-solid fa-arrow-up-long"></i></a>
+                <a th:href="@{/product-list(page=${currentPage}, sort='exportPrice', order='desc')}" class="sort-button"><i class="fa-solid fa-arrow-down-long"></i></a>
+                <p>Sort price</p>
+                </div>
+                <form class="main_right" action="/product-list" method="get">
+                    <input class="searchInput input_search" type="text" name="search" placeholder="Enter product name"
+                           th:value="${search}">
+                    <button type="submit" class="search btn_search"><i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+            <div th:each="product : ${productList}" class="pro">
+                <a th:href="@{'/product-detail/'+ ${product.productId}}">
+                    <img th:src="@{|../uploads/${product.image1}|}" alt="">
+                    <div class="des">
+                        <h4 th:text="${product.productName}"></h4>
+                        <div class="star">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <h4 th:text="${product.import_price + '$'}"></h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="next" th:if="${search == null or search == ''}">
+            <ul>
+                <li th:classappend="${currentPage == 0 ? 'myDisabled' : ''}"><a th:href="@{/product-list(page=${currentPage - 1})}" class="button"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                <li  th:each="pageNumber : ${#numbers.sequence(0, totalPages - 1)}"><a  th:classappend="${pageNumber == currentPage ? 'active' : ''}" th:href="@{/product-list(page=${pageNumber})}"
+                                                                                                   th:text="${pageNumber + 1}" class="button">1</a></li>
+                <li th:classappend="${currentPage == totalPages - 1 ? 'myDisabled' : ''}"><a th:href="@{/product-list(page=${currentPage + 1})}" class="button"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+
+    </section>
+    <div class="backtop">
+        <a id="back-top" href="#top"><img th:src="@{images/top.png}" width="22px"></a>
+    </div>
+    <th:block th:insert="layouts/bottom.html"></th:block>
+</div>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{js/shop.js}"></script>
+<script th:src="@{js/pro1.js}"></script>
+</body>
+</html>
